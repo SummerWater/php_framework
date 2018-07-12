@@ -1,8 +1,9 @@
 <?php
 
 return [
-    'host' => '127.0.0.1',
+    'database_type' => 'mysql',
+    'database_name' => 'test',
+    'server' => 'localhost',
     'username' => 'root',
-    'passwd' => '',
-    'database' => 'test'
+    'password' => ''
 ];

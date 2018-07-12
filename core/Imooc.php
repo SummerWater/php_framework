@@ -56,10 +56,17 @@ class Imooc
 
     public function display($file)
     {
-        $file = APP . '/view/' . $file;
-        if (is_file($file)) {
+        $dir = APP . '/view/';
+        $path = $dir . $file;
+        if (is_file($path)) {
             extract($this->assign);
-            include $file;
+            $loader = new \Twig_Loader_Filesystem($dir);
+            $twig = new \Twig_Environment($loader, array(
+                'cache' => ROOT_PATH . '/log/twig/',
+                'debug' => DEBUG
+            ));
+
+            echo $twig->render($file, $this->assign ? $this->assign : '');
         } else {
             echo '视图文件不存在:' . $file;
             exit();

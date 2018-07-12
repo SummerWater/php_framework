@@ -8,16 +8,11 @@
 
 namespace core\lib;
 
-class Model extends \PDO
+class Model extends \Medoo\Medoo
 {
     public function __construct()
     {
-        $database = \core\lib\Conf::all('database');
-        $dsn = 'mysql:dbname=' . $database['database'] . ';host=' . $database['host'];
-        try {
-            parent::__construct($dsn, $database['username'], $database['passwd']);
-        } catch (\PDOException $e) {
-            echo 'Connection failed: ' . $e->getMessage();
-        }
+        $database = Conf::all('database');
+        parent::__construct($database);
     }
 }

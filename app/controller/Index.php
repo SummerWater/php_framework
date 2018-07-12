@@ -16,8 +16,6 @@ class Index extends Imooc
 {
     public function index()
     {
-        p(Conf::get('controller', 'route'));
-        p(Conf::get('action', 'route'));
         $data = 'hello world';
         $title = '视图文件';
         $this->assign('data', $data);
@@ -28,7 +26,7 @@ class Index extends Imooc
     public function db()
     {
         $db = new Model;
-        $data = $db->query('SELECT * FROM order_queue');
-        p($data->fetchAll());
+        $data = $db->select('order_queue', '*', ['id' => 2]);
+        dump($data);
     }
 }
