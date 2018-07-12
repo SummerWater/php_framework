@@ -16,3 +16,36 @@ function p($var)
         echo "<pre style='position: relative;z-index: 1000;padding: 10px;border-radius: 5px;background: #f5f5f5;border: 1px solid #aaa;font-size: 14px;line-height: 18px;opacity: .9'>" . print_r($var, true) . "</pre>";
     }
 }
+
+/**
+ * @param $name string 对应值
+ * @param $default string 默认值
+ * @param $filter int 过滤
+ */
+function post($name, $default = false, $filter = false)
+{
+    if (isset($_POST[$name])) {
+        if ($filter) {
+            switch ($filter) {
+                case 'int':
+                    if (is_numeric($_POST[$name])) {
+                        return $_POST[$name];
+                    } else {
+                        return $default;
+                    }
+                    break;
+                default: return $default;
+            }
+        } else {
+            return $_POST[$name];
+        }
+    } else {
+        return $default;
+    }
+}
+
+function jump($url)
+{
+    header('Location:' . $url);
+    exit();
+}

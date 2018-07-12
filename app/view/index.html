@@ -1,4 +1,30 @@
 {% extends "layout.html" %}
 {% block content %}
-{{data}} {{title}}
+<div class="blog-header">
+    <h1 class="blog-title">超简单留言板</h1>
+    <p class="lead blog-description">从零搭建PHP框架实战项目...</p>
+</div>
+
+<div class="row">
+
+    <div class="col-sm-8 blog-main">
+        {% for item in items %}
+        <div class="blog-post">
+            <h2 class="blog-post-title">{{item.id}} {{item.title}}</h2>
+            <p class="blog-post-meta">{{item.ctime}} by <a href="#">{{item.author}}</a></p>
+            <p>{{item.content}}</p>
+        </div><!-- /.blog-post -->
+        {% endfor %}
+        <nav>
+            <ul class="pager">
+                <li><a href="#">上一页</a></li>
+                <li><a href="#">下一页</a></li>
+            </ul>
+        </nav>
+
+    </div><!-- /.blog-main -->
+
+    {% include 'menu.html' %}
+
+</div><!-- /.row -->
 {% endblock %}

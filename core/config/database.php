@@ -2,8 +2,9 @@
 
 return [
     'database_type' => 'mysql',
-    'database_name' => 'test',
+    'database_name' => 'guestbook',
     'server' => 'localhost',
     'username' => 'root',
-    'password' => ''
+    'password' => '',
+    'charset' => 'utf8'
 ];

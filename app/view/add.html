@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="blog-header">
+    <h1 class="blog-title">超简单留言板</h1>
+    <p class="lead blog-description">从零搭建PHP框架实战项目...</p>
+</div>
+
+<div class="row" style="padding-bottom: 50px">
+    <form action="/php_framework/index/save" method="post">
+        <div class="form-group">
+            <label for="title">标题</label>
+            <input type="text" class="form-control" id="title" placeholder="留言的标题" name="title">
+        </div>
+        <div class="form-group">
+            <label for="author">作者</label>
+            <input type="text" class="form-control" id="author" placeholder="xxx到此一游" name="author">
+        </div>
+        <div class="form-group">
+            <label for="content">留言</label>
+            <textarea name="content" class="form-control" rows="3" id="content"></textarea>
+        </div>
+        <button type="submit" class="btn btn-default">提交留言</button>
+    </form>
+</div><!-- /.row -->
+{% endblock %}

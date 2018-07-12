@@ -66,7 +66,7 @@ class Imooc
                 'debug' => DEBUG
             ));
 
-            echo $twig->render($file, $this->assign ? $this->assign : '');
+            echo $twig->render($file, $this->assign ? $this->assign : []);
         } else {
             echo '视图文件不存在:' . $file;
             exit();
