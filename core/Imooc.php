@@ -2,6 +2,8 @@
 
 namespace core;
 
+use core\lib\Log;
+
 class Imooc
 {
     public static $classMap = [];
@@ -9,6 +11,8 @@ class Imooc
 
     static public function run()
     {
+        // 启动日志
+        Log::init();
         // 加载路由
         $route = new \core\lib\Route();
         // 路由获取控制器和方法
@@ -21,6 +25,7 @@ class Imooc
             $classPath = MODULE . '\\' . 'controller\\' . $controller;
             $cls = new $classPath;
             $cls->$action();
+            Log::log('Controller:' . $controller . ' Action:' . $action);
         } else {
             // 异常：控制器不存在
             throw new \Exception('找不到控制器:' . $controller);
@@ -51,7 +56,7 @@ class Imooc
 
     public function display($file)
     {
-        $file = APP . '/view/'.$file;
+        $file = APP . '/view/' . $file;
         if (is_file($file)) {
             extract($this->assign);
             include $file;

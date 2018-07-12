@@ -11,6 +11,9 @@ define('CORE', ROOT_PATH . '/core');
 define('APP', ROOT_PATH . '/app');
 define('MODULE', '\\app');
 define('DEBUG', true);
+
+ini_set('date.timezone','Asia/Shanghai');
+
 if (DEBUG) {
     ini_set('display_errors', 'On');
 } else {

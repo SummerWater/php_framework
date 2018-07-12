@@ -7,17 +7,28 @@
  */
 
 namespace app\controller;
-use app\controller\Model;
+
 use core\Imooc;
+use core\lib\Conf;
+use core\lib\Model;
 
 class Index extends Imooc
 {
     public function index()
     {
+        p(Conf::get('controller', 'route'));
+        p(Conf::get('action', 'route'));
         $data = 'hello world';
         $title = '视图文件';
         $this->assign('data', $data);
         $this->assign('title', $title);
         $this->display('index.html');
+    }
+
+    public function db()
+    {
+        $db = new Model;
+        $data = $db->query('SELECT * FROM order_queue');
+        p($data->fetchAll());
     }
 }

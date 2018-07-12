@@ -6,19 +6,16 @@
  * Time: 13:39
  */
 
-namespace app\controller;
-
+namespace core\lib;
 
 class Model extends \PDO
 {
     public function __construct()
     {
-        $dsn = 'mysql:dbname=test;host=127.0.0.1';
-        $username = 'root';
-        $passwd = '';
-
+        $database = \core\lib\Conf::all('database');
+        $dsn = 'mysql:dbname=' . $database['database'] . ';host=' . $database['host'];
         try {
-            parent::__construct($dsn, $username, $passwd);
+            parent::__construct($dsn, $database['username'], $database['passwd']);
         } catch (\PDOException $e) {
             echo 'Connection failed: ' . $e->getMessage();
         }
